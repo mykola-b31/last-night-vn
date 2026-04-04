@@ -1,0 +1,19 @@
+title: CheckEnding
+---
+Логіка: Ранок. Час підбивати підсумки.
+Емоції: Я боюся... що буде?
+
+<<if get_progress() < 50>>
+    -> Провал
+        -> Ending_Failure
+<<elseif get_progress() == 100 && get_stress() == 100>>
+    -> Зомбі
+        -> Ending_Zombie
+<<elseif get_progress() > 70 && get_stress() < 80>>
+    -> Успіх
+        -> Ending_Success
+<<else>>
+    -> Звичайна кінцівка
+        -> Ending_Failure
+<<endif>>
+===
