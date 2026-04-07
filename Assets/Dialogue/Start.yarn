@@ -1,8 +1,13 @@
 title: Start
 ---
+<<set_bg room>>
+<<show_char_right logic>>
 Логіка: Система запущена. Починаємо роботу над проектом.
+<<hide_char_right>>
+<<show_char_left emotions>>
 Емоції: О ні, знову дедлайн... Сподіваюся, ми впораємося!
+<<hide_char_left>>
 
 -> Розпочати гру
-    -> Scene1_Denial
+    <<jump Scene1_Denial>>
 ===
