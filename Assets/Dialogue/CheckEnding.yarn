@@ -17,7 +17,7 @@ title: CheckEnding
     -> Успіх
         <<jump Ending_Success>>
 <<else>>
-    -> Провал
-        <<jump Ending_Failure>>
+    -> Задовільно
+        <<jump Ending_Neutral>>
 <<endif>>
 ===
