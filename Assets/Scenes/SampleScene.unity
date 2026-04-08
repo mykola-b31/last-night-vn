@@ -1316,8 +1316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db90297fb8b28772ab54e562ac62644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progress: 0
-  stress: 0
+  progress: 35
+  stress: 45
   progressSlider: {fileID: 120234778}
   stressSlider: {fileID: 295187594}
 --- !u!4 &1982179572
