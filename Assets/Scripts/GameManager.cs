@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
         UpdateUI();
     }
-
+    
     [YarnFunction("get_progress")]
     public static int GetProgress()
     {
