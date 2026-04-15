@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
         UpdateUI();
     }
-
+    
     [YarnFunction("get_progress")]
     public static int GetProgress()
     {
@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
     {
         return Instance.stress;
     }
-
 
     [YarnCommand("add_progress")]
     public static void AddProgress(int amount)

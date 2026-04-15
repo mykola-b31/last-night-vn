@@ -53,6 +53,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+ProjectSettings/Packages/dev.yarnspinner/Assembly-CSharp-generated.ysls.json
+
 # VisualStudioCode
 .vscode/*
 !.vscode/settings.json
