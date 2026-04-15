@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Metrics")]
 
-    [Range(0, 100)] public int progress = 0;
-    [Range(0, 100)] public int stress = 0;
+    [Range(0, 100)] public int progress = 35;
+    [Range(0, 100)] public int stress = 45;
 
     [Header("UI Elements")]
     public Slider progressSlider;
@@ -35,6 +35,19 @@ public class GameManager : MonoBehaviour
 
         UpdateUI();
     }
+
+    [YarnFunction("get_progress")]
+    public static int GetProgress()
+    {
+        return Instance.progress;
+    }
+
+    [YarnFunction("get_stress")]
+    public static int GetStress()
+    {
+        return Instance.stress;
+    }
+
 
     [YarnCommand("add_progress")]
     public static void AddProgress(int amount)
