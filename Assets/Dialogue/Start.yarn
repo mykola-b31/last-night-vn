@@ -1,6 +1,7 @@
 title: Start
 ---
 <<set_bg room>>
+<<play_music main_theme>>
 <<show_char_right logic>>
 Логіка: Система запущена. Починаємо роботу над проектом.
 <<hide_char_right>>
