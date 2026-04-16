@@ -1,6 +1,6 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using Yarn.Unity;
 
 public class GameManager : MonoBehaviour
@@ -8,13 +8,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("Game Metrics")]
-
     [Range(0, 100)] public int progress = 35;
     [Range(0, 100)] public int stress = 45;
 
-    [Header("UI Elements")]
-    public Slider progressSlider;
-    public Slider stressSlider;
+    public static event Action<int> OnProgressChanged;
+    public static event Action<int> OnStressChanged;
 
     private void Awake()
     {
@@ -27,32 +25,18 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void Start()
-    {
-        if (progressSlider != null) progressSlider.maxValue = 100;
-        if (stressSlider != null) stressSlider.maxValue = 100;
-
-        UpdateUI();
-    }
     
     [YarnFunction("get_progress")]
-    public static int GetProgress()
-    {
-        return Instance.progress;
-    }
+    public static int GetProgress() => Instance.progress;
 
     [YarnFunction("get_stress")]
-    public static int GetStress()
-    {
-        return Instance.stress;
-    }
+    public static int GetStress() => Instance.stress;
 
     [YarnCommand("add_progress")]
     public static void AddProgress(int amount)
     {
         Instance.progress = Mathf.Clamp(Instance.progress + amount, 0, 100);
-        Instance.UpdateUI();
+        OnProgressChanged?.Invoke(Instance.progress);
         Debug.Log($"Прогрес збільшено на {amount}. Поточний прогрес: {Instance.progress}%");
     }
 
@@ -60,14 +44,7 @@ public class GameManager : MonoBehaviour
     public static void AddStress(int amount)
     {
         Instance.stress = Mathf.Clamp(Instance.stress + amount, 0, 100);
-        Instance.UpdateUI();
+        OnStressChanged?.Invoke(Instance.stress);
         Debug.Log($"Стрес змінився на {amount}. Поточний стрес: {Instance.stress}%");
     }
-
-    private void UpdateUI()
-    {
-        if (progressSlider != null) progressSlider.value = Instance.progress;
-        if (stressSlider != null) stressSlider.value = Instance.stress;
-    }
-
 }
