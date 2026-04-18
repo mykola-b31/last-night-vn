@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
     public string gameSceneName = "SampleScene";
+    public GameObject settingsPanel;
+
     public void StartNewGame()
     {
         SceneManager.LoadScene(gameSceneName);
@@ -16,8 +20,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OpenSettings()
     {
-        // TODO: Реалізувати вікно налаштувань
-        Debug.Log("Відкрито налаштування");
+        if (settingsPanel != null) settingsPanel.SetActive(true);
     }
 
     public void QuitGame()
