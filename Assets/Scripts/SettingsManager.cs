@@ -20,6 +20,9 @@ public class SettingsManager : MonoBehaviour
         LoadAudioSetting("MusicVol", musicSlider, "MusicVolume");
         LoadAudioSetting("SFXVol", sfxSlider, "SFXVolume");
 
+        if (musicSlider != null) musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        if (sfxSlider != null) sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+
         if (textSpeedSlider != null)
         {
             textSpeedSlider.value = PlayerPrefs.GetInt("TextSpeed", 30);
