@@ -12,6 +12,8 @@ public class GameUIManager : MonoBehaviour
     [Header("Yarn Spinner UI")]
     public LinePresenter yarnLinePresenter;
     public TextMeshProUGUI yarnDialogueText;
+    public TextMeshProUGUI characterNameText;
+    public TextMeshProUGUI textLastLine;
 
     private void Start()
     {
@@ -32,9 +34,21 @@ public class GameUIManager : MonoBehaviour
             yarnLinePresenter.autoAdvance = PlayerPrefs.GetInt("AutoForward", 0) == 1;
         }
 
+        int savedFontSize = PlayerPrefs.GetInt("FontSize", 24);
+
         if (yarnDialogueText != null)
         {
-            yarnDialogueText.fontSize = PlayerPrefs.GetInt("FontSize", 24);
+            yarnDialogueText.fontSize = savedFontSize;
+        }
+
+        if (characterNameText != null)
+        {
+            characterNameText.fontSize = savedFontSize;
+        }
+
+        if (textLastLine != null)
+        {
+            textLastLine.fontSize = savedFontSize * 0.85f;
         }
     }
 
@@ -42,12 +56,14 @@ public class GameUIManager : MonoBehaviour
     {
         GameManager.OnProgressChanged += UpdateProgressUI;
         GameManager.OnStressChanged += UpdateStressUI;
+        SettingsManager.OnSettingsChanged += ApplySettings;
     }
 
     private void OnDisable()
     {
         GameManager.OnProgressChanged -= UpdateProgressUI;
         GameManager.OnStressChanged -= UpdateStressUI;
+        SettingsManager.OnSettingsChanged -= ApplySettings;
     }
 
     private void UpdateProgressUI(int newProgress)
