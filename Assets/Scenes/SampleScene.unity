@@ -934,14 +934,14 @@ MonoBehaviour:
   rightCharacterImage: {fileID: 1471443908}
   backgrounds:
   - idName: room
-    sprite: {fileID: 21300000, guid: 8fab98d8e61289b5ead5c030ddec26df, type: 3}
+    sprite: {fileID: 21300000, guid: 7fd817387cd256a42a8d8660acbe7083, type: 3}
   - idName: university
     sprite: {fileID: 21300000, guid: 3f5fcfd337035f7ae8ae776cb70c88d2, type: 3}
   characters:
   - idName: emotions
-    sprite: {fileID: 21300000, guid: 45bf107ff6b3979f49b952083f815cbe, type: 3}
+    sprite: {fileID: 21300000, guid: ca4f1bb9a553d744fac26d71f120a81d, type: 3}
   - idName: logic
-    sprite: {fileID: 21300000, guid: 48586e314d664732590a12f828330ec4, type: 3}
+    sprite: {fileID: 21300000, guid: c73e7e01d6de8034aa13147e9bf0f0f2, type: 3}
 --- !u!4 &1018903488
 Transform:
   m_ObjectHideFlags: 0
