@@ -1,23 +1,19 @@
 title: CheckEnding
 ---
 <<show_char_right logic>>
-Логіка: Ранок. Час підбивати підсумки.
+Логіка: Файл надіслано. Час підбивати підсумки.
 <<hide_char_right>>
 <<show_char_left emotions>>
-Емоції: Я боюся... що буде?
+Емоції: (схвильовано, з надією) Що буде? Ми впорались? Ми отримаємо стипендію?
 <<hide_char_left>>
 
 <<if get_progress() < 50>>
-    -> Провал
-        <<jump Ending_Failure>>
+    <<jump Ending_Failure>>
 <<elseif get_progress() == 100 && get_stress() == 100>>
-    -> Зомбі
-        <<jump Ending_Zombie>>
+    <<jump Ending_Zombie>>
 <<elseif get_progress() > 70 && get_stress() < 80>>
-    -> Успіх
-        <<jump Ending_Success>>
+    <<jump Ending_Success>>
 <<else>>
-    -> Задовільно
-        <<jump Ending_Neutral>>
+    <<jump Ending_Neutral>>
 <<endif>>
 ===
