@@ -1,5 +1,6 @@
 title: Scene_SocialMedia
 ---
+<<save_game>>
 Телефон вібрує знову. На екрані — сповіщення з Instagram. "Катя опублікувала нове фото". Ти мимоволі тягнешся подивитися.
 
 <<show_char_left emotions>>

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
 using TMPro;
+using System.Collections;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class GameUIManager : MonoBehaviour
     public TextMeshProUGUI yarnDialogueText;
     public TextMeshProUGUI characterNameText;
     public TextMeshProUGUI textLastLine;
+
+    [Header("Save Indicator")]
+    public GameObject saveIcon;
+    public int blinkCount = 5;
+    public float blinkSpeed = 0.5f;
 
     private void Start()
     {
@@ -57,6 +63,7 @@ public class GameUIManager : MonoBehaviour
         GameManager.OnProgressChanged += UpdateProgressUI;
         GameManager.OnStressChanged += UpdateStressUI;
         SettingsManager.OnSettingsChanged += ApplySettings;
+        SaveLoadManager.OnGameSaved += TriggerSaveIcon;
     }
 
     private void OnDisable()
@@ -64,6 +71,7 @@ public class GameUIManager : MonoBehaviour
         GameManager.OnProgressChanged -= UpdateProgressUI;
         GameManager.OnStressChanged -= UpdateStressUI;
         SettingsManager.OnSettingsChanged -= ApplySettings;
+        SaveLoadManager.OnGameSaved -= TriggerSaveIcon;
     }
 
     private void UpdateProgressUI(int newProgress)
@@ -74,5 +82,27 @@ public class GameUIManager : MonoBehaviour
     private void UpdateStressUI(int newStress)
     {
         if (stressSlider != null) stressSlider.value = newStress;
+    }
+
+    private void TriggerSaveIcon()
+    {
+        if (saveIcon != null)
+        {
+            StopAllCoroutines();
+            StartCoroutine(BlinkRoutine());
+        }
+    }
+
+    private IEnumerator BlinkRoutine()
+    {
+        for (int i = 0; i < blinkCount; i++)
+        {
+            saveIcon.SetActive(true);
+            yield return new WaitForSeconds(blinkSpeed);
+            saveIcon.SetActive(false);
+            yield return new WaitForSeconds(blinkSpeed);
+        }
+
+        saveIcon.SetActive(false);
     }
 }

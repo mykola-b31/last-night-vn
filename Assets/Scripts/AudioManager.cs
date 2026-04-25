@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource bmgSource;
     public AudioSource sfxSource;
 
+    [HideInInspector] public string currentMusicId = "";
+
     [System.Serializable]
     public struct AudioData
     {
@@ -49,6 +51,8 @@ public class AudioManager : MonoBehaviour
                 Instance.bmgSource.clip = track.clip;
                 Instance.bmgSource.loop = true;
                 Instance.bmgSource.Play();
+
+                Instance.currentMusicId = trackName;
                 return;
             }
         }
@@ -58,7 +62,10 @@ public class AudioManager : MonoBehaviour
     [YarnCommand("stop_music")]
     public static void StopMusic()
     {
-        if (Instance != null) Instance.bmgSource.Stop();
+        if (Instance != null){
+            Instance.bmgSource.Stop();
+            Instance.currentMusicId = "";
+        }
     }
 
     [YarnCommand("play_sound")]

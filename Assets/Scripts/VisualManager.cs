@@ -12,6 +12,10 @@ public class VisualManager : MonoBehaviour
     public Image leftCharacterImage;
     public Image rightCharacterImage;
 
+    [HideInInspector] public string currentBgId = "";
+    [HideInInspector] public string currentLeftCharId = "";
+    [HideInInspector] public string currentRightCharId = "";
+
     [System.Serializable]
     public struct SpriteData
     {
@@ -32,6 +36,7 @@ public class VisualManager : MonoBehaviour
     [YarnCommand("set_bg")]
     public static void SetBackground(string bgName)
     {
+        Instance.currentBgId = bgName;
         foreach (var bg in Instance.backgrounds)
         {
             if (bg.idName == bgName)
@@ -47,6 +52,7 @@ public class VisualManager : MonoBehaviour
     [YarnCommand("show_char_left")]
     public static void ShowCharacterLeft(string charName)
     {
+        Instance.currentLeftCharId = charName;
         foreach (var ch in Instance.characters)
         {
             if (ch.idName == charName)
@@ -62,6 +68,7 @@ public class VisualManager : MonoBehaviour
     [YarnCommand("show_char_right")]
     public static void ShowCharacterRight(string charName)
     {
+        Instance.currentRightCharId = charName;
         foreach (var ch in Instance.characters)
         {
             if (ch.idName == charName)
@@ -78,11 +85,13 @@ public class VisualManager : MonoBehaviour
     public static void HideCharacterLeft()
     {
         Instance.leftCharacterImage.enabled = false;
+        Instance.currentLeftCharId = "";
     }
 
     [YarnCommand("hide_char_right")]
     public static void HideCharacterRight()
     {
         Instance.rightCharacterImage.enabled = false;
+        Instance.currentRightCharId = "";
     }
 }
