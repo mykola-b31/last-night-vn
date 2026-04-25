@@ -1,5 +1,6 @@
 title: CheckEnding
 ---
+<<save_game>>
 <<show_char_right logic>>
 Логіка: Файл надіслано. Час підбивати підсумки.
 <<hide_char_right>>
