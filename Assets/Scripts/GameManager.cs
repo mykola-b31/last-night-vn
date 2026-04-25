@@ -47,4 +47,14 @@ public class GameManager : MonoBehaviour
         OnStressChanged?.Invoke(Instance.stress);
         Debug.Log($"Стрес змінився на {amount}. Поточний стрес: {Instance.stress}%");
     }
+
+    public static void LoadState(int savedProgress, int savedStress)
+    {
+        Instance.progress = savedProgress;
+        Instance.stress = savedStress;
+        
+        OnProgressChanged?.Invoke(Instance.progress);
+        OnStressChanged?.Invoke(Instance.stress);
+        Debug.Log($"Завантажено стан: Прогрес - {Instance.progress}%, Стрес - {Instance.stress}%");
+    }
 }
