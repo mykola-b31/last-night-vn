@@ -3,12 +3,15 @@ using Yarn.Unity;
 using System.Linq;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 public class SaveLoadManager : MonoBehaviour
 {
     public static SaveLoadManager Instance { get; private set; }
 
     public static bool ShouldLoadSave = false;
+
+    public static event Action OnGameSaved;
 
     [Header("Yarn References")]
     public DialogueRunner dialogueRunner;
@@ -73,6 +76,8 @@ public class SaveLoadManager : MonoBehaviour
         File.WriteAllText(Instance.SaveFilePath, json);
 
         Debug.Log($"Гра збережена за шляхом: {Instance.SaveFilePath}");
+
+        OnGameSaved?.Invoke();
     }
 
     public void LoadGame()
