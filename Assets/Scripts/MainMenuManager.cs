@@ -1,12 +1,25 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using System.IO;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
     public string gameSceneName = "SampleScene";
+
+    [Header("UI References")]
+    public Button continueButton;
+
     public GameObject settingsPanel;
+
+    private void Start()
+    {
+        string saveFilePath = Application.persistentDataPath + "/savegame.json";
+        if (continueButton != null)
+        {
+            continueButton.interactable = File.Exists(saveFilePath);
+        }
+    }
 
     public void StartNewGame()
     {
@@ -15,7 +28,13 @@ public class MainMenuManager : MonoBehaviour
 
     public void ContinueGame()
     {
-        // TODO: Реалізувати збереження та завантаження прогресу
+        string saveFilePath = Application.persistentDataPath + "/savegame.json";
+        
+        if (File.Exists(saveFilePath))
+        {
+            SaveLoadManager.ShouldLoadSave = true;
+            SceneManager.LoadScene(gameSceneName);
+        }
     }
 
     public void OpenSettings()

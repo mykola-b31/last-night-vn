@@ -8,6 +8,8 @@ public class SaveLoadManager : MonoBehaviour
 {
     public static SaveLoadManager Instance { get; private set; }
 
+    public static bool ShouldLoadSave = false;
+
     [Header("Yarn References")]
     public DialogueRunner dialogueRunner;
     public InMemoryVariableStorage variableStorage;
@@ -18,6 +20,26 @@ public class SaveLoadManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        if (ShouldLoadSave)
+        {
+            LoadGame();
+            ShouldLoadSave = false;
+        }
+        else
+        {
+            if (dialogueRunner != null)
+            {
+                GameManager.LoadState(35, 45);
+                variableStorage.Clear();
+                
+                dialogueRunner.Stop();
+                dialogueRunner.StartDialogue("Start");
+            }
+        }
     }
 
     [YarnCommand("save_game")]
