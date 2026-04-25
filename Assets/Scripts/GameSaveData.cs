@@ -18,4 +18,6 @@ public class GameSaveData
     public string currentBackgroundId;
     public string leftCharacterId;
     public string rightCharacterId;
+
+    public string currentMusicId;
 }

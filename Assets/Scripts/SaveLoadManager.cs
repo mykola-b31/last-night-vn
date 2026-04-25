@@ -67,6 +67,8 @@ public class SaveLoadManager : MonoBehaviour
         data.leftCharacterId = VisualManager.Instance.currentLeftCharId;
         data.rightCharacterId = VisualManager.Instance.currentRightCharId;
 
+        data.currentMusicId = AudioManager.Instance.currentMusicId;
+
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(Instance.SaveFilePath, json);
 
@@ -107,6 +109,15 @@ public class SaveLoadManager : MonoBehaviour
         else
         {
             VisualManager.HideCharacterRight();
+        }
+
+        if (!string.IsNullOrEmpty(data.currentMusicId))
+        {
+            AudioManager.PlayMusic(data.currentMusicId);
+        }
+        else
+        {
+            AudioManager.StopMusic();
         }
 
         var floatVars = new Dictionary<string, float>();
