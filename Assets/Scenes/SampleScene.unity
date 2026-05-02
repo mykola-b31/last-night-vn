@@ -1131,7 +1131,7 @@ MonoBehaviour:
   - idName: room
     sprite: {fileID: 21300000, guid: 7fd817387cd256a42a8d8660acbe7083, type: 3}
   - idName: university
-    sprite: {fileID: 21300000, guid: 3f5fcfd337035f7ae8ae776cb70c88d2, type: 3}
+    sprite: {fileID: 21300000, guid: ecf9a8c3b8c87164e85e1fdfd3f2b5ae, type: 3}
   characters:
   - idName: emotions
     sprite: {fileID: 21300000, guid: ca4f1bb9a553d744fac26d71f120a81d, type: 3}
