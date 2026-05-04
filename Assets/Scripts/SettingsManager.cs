@@ -2,11 +2,15 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class SettingsManager : MonoBehaviour
 {
     [Header("UI References")]
     public GameObject settingsUIPanel;
+
+    [Header("Scene Management")]
+    public string mainMenuSceneName = "MainMenu";
 
     [Header("Audio")]
     public AudioMixer mainMixer;
@@ -91,6 +95,12 @@ public class SettingsManager : MonoBehaviour
     public void CloseSettings()
     {
         if (settingsUIPanel != null) settingsUIPanel.SetActive(false);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        CloseSettings(); 
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
 }
