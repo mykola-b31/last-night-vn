@@ -5,6 +5,9 @@ using UnityEngine.Audio;
 
 public class SettingsManager : MonoBehaviour
 {
+    [Header("UI References")]
+    public GameObject settingsUIPanel;
+
     [Header("Audio")]
     public AudioMixer mainMixer;
     public Slider musicSlider, sfxSlider;
@@ -87,8 +90,7 @@ public class SettingsManager : MonoBehaviour
 
     public void CloseSettings()
     {
-        gameObject.SetActive(false);
+        if (settingsUIPanel != null) settingsUIPanel.SetActive(false);
     }
-
 
 }
