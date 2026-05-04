@@ -1,6 +1,7 @@
 title: Start
 ---
 <<set_bg room>>
+<<stop_music>>
 <<play_music main_theme>>
 <<show_char_right logic>>
 Логіка: (холодно) Система запущена. Дедлайн за 4 години. Проект готовий на 50%. Рекомендую приступити негайно.

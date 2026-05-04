@@ -19,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
         {
             continueButton.interactable = File.Exists(saveFilePath);
         }
+        AudioManager.PlayMusic("menu_theme");
     }
 
     public void StartNewGame()
